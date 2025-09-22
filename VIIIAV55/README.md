@@ -21,3 +21,11 @@ A második részben két példán keresztül ismerkedünk meg a MoveIt alapjaiva
 2. Megvalósítunk egy egyszerű pick & place alkalmazást.
 
 A kiinduláshoz szükséges kódot a `moveit_example` mappában találjátok. Először a `first_scenario.hpp` fájlt egészítjük ki, ahol egy téglatestet helyezünk el a világban, majd a robotot a túloldalára mozgatjuk. Ezután a `second_scenario.hpp` fájlban egy előre elkészített környezetben kell a lila hengert egyik asztalról a másikra áthelyezni úgy, hogy az soha ne forduljon fejjel lefelé.
+
+## Linkek
+
+* [Tantárgyi adatlap](https://portal.vik.bme.hu/kepzes/targyak/VIIIAV55/)
+* [ROS 2](https://github.com/ros2)
+* [ros2_control](https://github.com/ros-controls/ros2_control)
+* [MoveIt 2](https://github.com/moveit/moveit2)
+* [Sajtómegjelenés](https://www.linkedin.com/posts/kukaglobal_a-kuka-%C3%A9s-a-bme-budapest-university-of-activity-7229396384574013440-LHqc/)
