@@ -22,6 +22,31 @@ A második részben két példán keresztül ismerkedünk meg a MoveIt alapjaiva
 
 A kiinduláshoz szükséges kódot a `moveit_example` mappában találjátok. Először a `first_scenario.hpp` fájlt egészítjük ki, ahol egy téglatestet helyezünk el a világban, majd a robotot a túloldalára mozgatjuk. Ezután a `second_scenario.hpp` fájlban egy előre elkészített környezetben kell a lila hengert egyik asztalról a másikra áthelyezni úgy, hogy az soha ne forduljon fejjel lefelé.
 
+## A környezet beállítása
+
+A gyakorlathoz szükséges környezetet egy **Dev Containerbe** csomagoltuk. Ez lehetővé teszi, hogy mindenki azonos környezetben tudjon fejleszteni, és jelentősen megkönnyíti a környezet összeállítását is. Részletesebben a [Visual Studio Code weboldalon](https://code.visualstudio.com/docs/devcontainers/containers) olvashattok erről.
+
+A konténer indításához szükséges szoftverek:
+
+* [Visual Studio Code](https://code.visualstudio.com/) + [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) kiegészítő
+* [Docker Desktop](https://www.docker.com/products/docker-desktop) &ndash; valójában a [Docker Engine](https://docs.docker.com/engine/install/) is elegendő lenne, de a Dev Containerekről szóló dokumentáció is a Desktop verziót ajánlja
+
+Ha ezek mind telepítve vannak, akkor leklónuzhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
+
+```bash
+git clone https://github.com/kroshu/education.git -b humble
+```
+
+Ezután indítsuk el a [Docker daemont](https://docs.docker.com/engine/daemon/start/), ezt könnyen megtehetjük a Docker Desktop grafikus felületén keresztül is. Nyissuk meg az `education` repóban található `VIIIAV55` nevű mappát VS Code-ban. Nyomjuk meg `F1` gombot a `Command Palette` megnyitásához, majd válasszuk ki a `Dev Containers: Rebuild and Reopen in Container` opciót. Most már csak várnunk kell, hogy felépüljön a rendszer.
+
+### Eltérések céges hálózat esetén
+
+Amennyiben a **KUKA hálózatáról** szeretnénk a környezetet összeállítani, akkor először meg kell szereznünk a KUKA gyökértanusítványát (*root certificate*), amit a `.devcontainer/certs` mappába kell elhelyeznünk. Ezen kívül ki kell kommentezni a `.devcontainer/devcontainer.json` fájlban a `mounts` kulcs utáni részt. Ezt követően minden ugyanúgy történik, mint a korábban leírt esetben.
+
+### Megjegyzés
+
+A fentebb leírt lépéseket [Podman Desktop](https://podman-desktop.io/) mellett próbáltuk ki, amely a Docker Desktop egy nyílt forráskódú alternatívája. Podman használatához szükséges beállításokról a [VS Code dokumentációjában](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman) olvashattok.
+
 ## Linkek
 
 * [Tantárgyi adatlap](https://portal.vik.bme.hu/kepzes/targyak/VIIIAV55/)
