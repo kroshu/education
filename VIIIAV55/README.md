@@ -34,7 +34,7 @@ A konténer indításához szükséges szoftverek:
 Ha ezek mind telepítve vannak, akkor leklónuzhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
 
 ```bash
-git clone https://github.com/kroshu/education.git -b humble
+git clone https://github.com/kroshu/education.git -b viiiav55-starter
 ```
 
 Ezután indítsuk el a [Docker daemont](https://docs.docker.com/engine/daemon/start/), ezt könnyen megtehetjük a Docker Desktop grafikus felületén keresztül is. Nyissuk meg az `education` repóban található `VIIIAV55` nevű mappát VS Code-ban. Nyomjuk meg `F1` gombot a `Command Palette` megnyitásához, majd válasszuk ki a `Dev Containers: Rebuild and Reopen in Container` opciót. Most már csak várnunk kell, hogy felépüljön a rendszer.
