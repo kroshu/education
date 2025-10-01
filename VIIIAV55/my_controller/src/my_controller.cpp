@@ -65,7 +65,7 @@ namespace my_controller
         // Get latest target
         std::copy_n(rt_target_pos_.readFromRT()->data(), num_joints_, target_cache_.data());
 
-        // P-control
+        // Interpolate joint positions
         const double max_step = max_velocity_ * period.seconds();
         for (size_t i = 0; i < num_joints_; i++)
         {
