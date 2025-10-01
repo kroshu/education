@@ -15,7 +15,7 @@ void FirstScenario(
   moveit_visual_tools.prompt("Press 'Next' to start the first scenario");
 
   // Create collision object for the robot to avoid
-  // IIFE
+  // Immediately Invoked Function Expression
   const auto [object, color] = []
   {
     moveit_msgs::msg::CollisionObject object;
@@ -23,7 +23,6 @@ void FirstScenario(
     object.header.frame_id = "world";
 
     // Define the size of the box
-    // Immediately Invoked Function Expression
     shape_msgs::msg::SolidPrimitive primitive;
     primitive.type = shape_msgs::msg::SolidPrimitive::BOX;
     primitive.dimensions.resize(3);

@@ -104,83 +104,39 @@ void SecondScenario(
 
   SetupScene();
 
-  moveit_visual_tools.prompt("Press 'Next' to plan to the cylinder");
+  // TODO 1
+  // Move the end-effector above the cylinder and make sure that it is facing down
+  //
+  // You have to:
+  // - Find the position of the cylinder
+  // - Create the pick_up_pose
+  // - Move the robot to the specified pose
+  // ...
 
-  // Find the position of the cylinder
-  moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-  const auto cylinder_pos = GetObjectPosition("cylinder");
-  RCLCPP_INFO(logger, "Cylinder position: %f %f %f", cylinder_pos.x, cylinder_pos.y, cylinder_pos.z);
+  // TODO 2
+  // Simulate picking up the cylinder by attaching it to the end-effector
+  // ...
 
-  // Move the end-effector above the cylinder
-  const auto pick_up_pose = [&cylinder_pos]
-  {
-    geometry_msgs::msg::Pose msg;
+  // TODO 3
+  // Set up orientation constraint to keep end-effector pointing down during movement
+  //
+  // You have to:
+  // - Describe the constraint with some tolerance
+  // - Apply this constraint to the move_group_interface
+  // ...
 
-    msg.orientation.x = 0.0;
-    msg.orientation.y = std::sin(Constants::PI / 2);
-    msg.orientation.z = 0.0;
-    msg.orientation.w = std::cos(Constants::PI / 2);
+  // TODO 4
+  // Move the end-effector above the other table (i.e. table1)
+  //
+  // You have to:
+  // - Find the position of table1
+  // - Create the drop_off_pose
+  // - Move the robot to the specified pose
+  // ...
 
-    msg.position.x = cylinder_pos.x;
-    msg.position.y = cylinder_pos.y;
-    msg.position.z = cylinder_pos.z + 0.06;
-    return msg;
-  }();
-  MoveToPose(pick_up_pose, move_group_interface, moveit_visual_tools, logger);
-
-  // Attach the cylinder to the end-effector
-  move_group_interface.attachObject("cylinder");
-  moveit_visual_tools.prompt("Cylinder attached to the end-effector. Press 'Next' to continue");
-
-  // Make sure that the orientation doesn't change
-  const auto constraints = []
-  {
-    moveit_msgs::msg::OrientationConstraint ocm;
-    ocm.link_name = "tool0";
-    ocm.header.frame_id = "world";
-
-    ocm.orientation.x = 0.0;
-    ocm.orientation.y = std::sin(Constants::PI / 2);
-    ocm.orientation.z = 0.0;
-    ocm.orientation.w = std::cos(Constants::PI / 2);
-
-    // Specify max deviation in radians
-    ocm.absolute_x_axis_tolerance = 0.5;
-    ocm.absolute_y_axis_tolerance = 0.5;
-    ocm.absolute_z_axis_tolerance = 0.5;
-    ocm.weight = 1.0;
-
-    moveit_msgs::msg::Constraints constraints;
-    constraints.orientation_constraints.push_back(ocm);
-    return constraints;
-  }();
-  move_group_interface.setPathConstraints(constraints);
-
-  // Find position of the first table
-  const auto drop_off_position = GetObjectPosition("table1");
-  RCLCPP_INFO(logger, "Target table position: %f %f %f", drop_off_position.x, drop_off_position.y, drop_off_position.z);
-
-  // Move the end-effector to the drop off point
-  const auto drop_off_pose = [&drop_off_position]
-  {
-    geometry_msgs::msg::Pose msg;
-
-    msg.orientation.x = 0.0;
-    msg.orientation.y = std::sin(Constants::PI / 2);
-    msg.orientation.z = 0.0;
-    msg.orientation.w = std::cos(Constants::PI / 2);
-
-    msg.position.x = drop_off_position.x;
-    msg.position.y = drop_off_position.y;
-    msg.position.z = drop_off_position.z + 0.2 + 0.11 + 1e-3;
-    return msg;
-  }();
-  move_group_interface.setPlanningTime(15.0);
-  MoveToPose(drop_off_pose, move_group_interface, moveit_visual_tools, logger);
-
-  // Detach the cylinder from the end-effector
-  move_group_interface.detachObject("cylinder");
-  moveit_visual_tools.prompt("Cylinder detached from the end-effector. Press 'Next' to continue");
+  // TODO 5
+  // Drop the cylinder onto the table by detaching it from the robot
+  // ...
 
   // Clear path constraints
   move_group_interface.clearPathConstraints();
