@@ -9,22 +9,34 @@ A gyakorlat során két fő témakörrel foglalkozunk:
 
 Célunk továbbá, hogy mindenkinél legyen egy működőképes ROS 2 fejlesztői környezet.
 
-## 1. Robot vezérlése saját kontrollerrel
+## Fejlesztői környezet előkészítése
 
-Ebben a feladatban egy olyan kontrollert kell készíteni, amely egy ROS topicon keresztül kapott csuklópozíciókat követve mozgatja a robotot. A kontrollernek képesnek kell lennie új célpozíció fogadására akkor is, ha az előző célt még nem érte el. További követelmény, hogy a kontroller legyen paraméterezhető egy konfigurációs fájlon keresztül. A kiinduló ROS csomagot a `my_controller` mappában találjátok.
+A szükséges környezetet kétféleképpen biztosítottuk:
 
-## 2. Robot mozgatása MoveIt segítségével
+* **Virtuális gép** formájában
+* **Dev Container** formájában
 
-A második részben két példán keresztül ismerkedünk meg a MoveIt alapjaival:
+Mindkét megoldás megkönnyíti a munkát, és akár a házi feladathoz is használható.
 
-1. Egy objektumot helyezünk el a virtuális térben, amit a robotnak ki kell kerülnie.
-2. Megvalósítunk egy egyszerű pick & place alkalmazást.
+### Virtuális gép
 
-A kiinduláshoz szükséges kódot a `moveit_example` mappában találjátok. Először a `first_scenario.hpp` fájlt egészítjük ki, ahol egy téglatestet helyezünk el a világban, majd a robotot a túloldalára mozgatjuk. Ezután a `second_scenario.hpp` fájlban egy előre elkészített környezetben kell a lila hengert egyik asztalról a másikra áthelyezni úgy, hogy az soha ne forduljon fejjel lefelé.
+A virtuális gép OVA fájlját [ezen a linken](https://bmeedu-my.sharepoint.com/:f:/g/personal/kpasztor_edu_bme_hu/EjRgtPqx1_9FmuC2OfgZtCwBLT_X3cKY2tVQ7U8pDEaoBg?e=vvwhUg) találjátok. Ez megnyitható például **VMware Workstation** vagy **VirtualBox** segítségével.
 
-## A környezet beállítása
+**VMware Workstation esetén:**
 
-A gyakorlathoz szükséges környezetet egy **Dev Containerbe** csomagoltuk. Ez lehetővé teszi, hogy mindenki azonos környezetben tudjon fejleszteni, és jelentősen megkönnyíti a környezet összeállítását is. Részletesebben a [Visual Studio Code weboldalon](https://code.visualstudio.com/docs/devcontainers/containers) olvashattok erről.
+* Válaszd ki az **Open Virtual Machine** opciót
+* Tallózd be az OVA fájlt
+
+**VirtualBox esetén:**
+
+* Nyisd meg a **File** menüt, majd válaszd ki az **Import Appliance** lehetőséget
+* Tallózd be az OVA fájlt
+
+A virtuális gépbe való belépéshez használd a *kuka* jelszót.
+
+### Dev Container használata
+
+A **Dev Container** technológiáról részletesebben a [Visual Studio Code weboldalán](https://code.visualstudio.com/docs/devcontainers/containers) olvashattok.
 
 A konténer indításához szükséges szoftverek:
 
@@ -34,18 +46,33 @@ A konténer indításához szükséges szoftverek:
 Ha ezek mind telepítve vannak, akkor leklónuzhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
 
 ```bash
-git clone https://github.com/kroshu/education.git -b humble
+git clone https://github.com/kroshu/education.git -b viiiav55-starter
 ```
 
 Ezután indítsuk el a [Docker daemont](https://docs.docker.com/engine/daemon/start/), ezt könnyen megtehetjük a Docker Desktop grafikus felületén keresztül is. Nyissuk meg az `education` repóban található `VIIIAV55` nevű mappát VS Code-ban. Nyomjuk meg `F1` gombot a `Command Palette` megnyitásához, majd válasszuk ki a `Dev Containers: Rebuild and Reopen in Container` opciót. Most már csak várnunk kell, hogy felépüljön a rendszer.
 
-### Eltérések céges hálózat esetén
+#### Eltérések céges hálózat esetén
 
 Amennyiben a **KUKA hálózatáról** szeretnénk a környezetet összeállítani, akkor először meg kell szereznünk a KUKA gyökértanusítványát (*root certificate*), amit a `.devcontainer/certs` mappába kell elhelyeznünk. Ezen kívül ki kell kommentezni a `.devcontainer/devcontainer.json` fájlban a `mounts` kulcs utáni részt. Ezt követően minden ugyanúgy történik, mint a korábban leírt esetben.
 
-### Megjegyzés
+#### Megjegyzés
 
 A fentebb leírt lépéseket [Podman Desktop](https://podman-desktop.io/) mellett próbáltuk ki, amely a Docker Desktop egy nyílt forráskódú alternatívája. Podman használatához szükséges beállításokról a [VS Code dokumentációjában](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman) olvashattok.
+
+## Elvégzendő feladatok
+
+### 1. Robot vezérlése saját kontrollerrel
+
+Ebben a feladatban egy olyan kontrollert kell készíteni, amely egy ROS topicon keresztül kapott csuklópozíciókat követve mozgatja a robotot. A kontrollernek képesnek kell lennie új célpozíció fogadására akkor is, ha az előző célt még nem érte el. További követelmény, hogy a kontroller legyen paraméterezhető egy konfigurációs fájlon keresztül. A kiinduló ROS csomagot a `my_controller` mappában találjátok.
+
+### 2. Robot mozgatása MoveIt segítségével
+
+A második részben két példán keresztül ismerkedünk meg a MoveIt alapjaival:
+
+1. Egy objektumot helyezünk el a virtuális térben, amit a robotnak ki kell kerülnie.
+2. Megvalósítunk egy egyszerű pick & place alkalmazást.
+
+A kiinduláshoz szükséges kódot a `moveit_example` mappában találjátok. Először a `first_scenario.hpp` fájlt egészítjük ki, ahol egy téglatestet helyezünk el a világban, majd a robotot a túloldalára mozgatjuk. Ezután a `second_scenario.hpp` fájlban egy előre elkészített környezetben kell a lila hengert egyik asztalról a másikra áthelyezni úgy, hogy az soha ne forduljon fejjel lefelé.
 
 ## Linkek
 
