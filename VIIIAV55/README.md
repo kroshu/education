@@ -20,7 +20,7 @@ Mindkét megoldás megkönnyíti a munkát, és akár a házi feladathoz is hasz
 
 ### Virtuális gép
 
-A virtuális gép OVA fájlját [ezen a linken](https://bmeedu-my.sharepoint.com/:f:/g/personal/kpasztor_edu_bme_hu/EjRgtPqx1_9FmuC2OfgZtCwBLT_X3cKY2tVQ7U8pDEaoBg?e=vvwhUg) találjátok. Ez megnyitható például **VMware Workstation** vagy **VirtualBox** segítségével.
+A virtuális gép OVA fájlját [ezen a linken](https://drive.google.com/drive/folders/1QVG72PD-RhH4-ImP4yRvStO2G1q4QJGc?usp=sharing) találjátok. Ez megnyitható például **VMware Workstation** vagy **VirtualBox** segítségével.
 
 **VMware Workstation esetén:**
 
