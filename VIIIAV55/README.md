@@ -32,7 +32,7 @@ A virtuális gép OVA fájlját [ezen a linken](https://drive.google.com/drive/f
 * Nyisd meg a **File** menüt, majd válaszd ki az **Import Appliance** lehetőséget
 * Tallózd be az OVA fájlt
 
-A virtuális gépbe való belépéshez használd a *kuka* jelszót.
+A virtuális gépbe való belépéshez használd a *student* jelszót.
 
 ### Dev Container használata
 
@@ -81,3 +81,4 @@ A kiinduláshoz szükséges kódot a `moveit_example` mappában találjátok. El
 * [ros2_control](https://github.com/ros-controls/ros2_control)
 * [MoveIt 2](https://github.com/moveit/moveit2)
 * [Sajtómegjelenés](https://www.linkedin.com/posts/kukaglobal_a-kuka-%C3%A9s-a-bme-budapest-university-of-activity-7229396384574013440-LHqc/)
+
