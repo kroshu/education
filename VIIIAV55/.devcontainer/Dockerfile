@@ -4,14 +4,13 @@ ARG USERNAME=rosdev
 ARG UID=1000
 ARG GID=$UID
 
-# Install some dependencies packages
-RUN apt update -q \
-    && apt upgrade -q -y \
-    && apt install -y --no-install-recommends \
+RUN apt-get update -q \
+    && apt-get upgrade -q -y \
+    && apt-get install -y --no-install-recommends \
     software-properties-common \
     python3-pip \
     xauth \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Create and switch to user
