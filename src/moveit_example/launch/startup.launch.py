@@ -57,6 +57,7 @@ def generate_launch_description():
         parameters=[moveit_config.to_dict(), {"publish_planning_scene_hz": 30.0}],
     )
 
+    # Toggle to comment if RViz not needed
     rviz = Node(
         package="rviz2",
         executable="rviz2",
@@ -80,6 +81,7 @@ def generate_launch_description():
             }
         ],
     )
+    # Toggle end
 
     return LaunchDescription(
         [
@@ -87,8 +89,11 @@ def generate_launch_description():
             DeclareLaunchArgument("use_gpio", default_value="false"),
             DeclareLaunchArgument("robot_family", default_value="agilus"),
             DeclareLaunchArgument("robot_model", default_value="kr10_r1100_2"),
+            DeclareLaunchArgument("controller_ip", default_value="0.0.0.0"),
+            DeclareLaunchArgument("client_ip", default_value="0.0.0.0"),
             startup_launch,
             move_group_server,
+            # Toggle to comment if RViz not needed
             rviz,
         ]
     )

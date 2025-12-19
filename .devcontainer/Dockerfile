@@ -1,15 +1,21 @@
 FROM ros:humble-ros-base
+# You might need docker.io/ at the start
 
 ARG USERNAME=rosdev
 ARG UID=1000
 ARG GID=$UID
 
+# Set needed envs
+ENV ROS_DOMAIN_ID=your_domain_id
+# Required if communication with remote endpoint needed, too
+# ENV FASTRTPS_DEFAULT_PROFILES_FILE=/home/rosdev/ros2_ws/fastdds_config.xml
+
+# Install some additional packages
 RUN apt-get update -q \
     && apt-get upgrade -q -y \
     && apt-get install -y --no-install-recommends \
     software-properties-common \
     python3-pip \
-    xauth \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -20,17 +26,9 @@ RUN groupadd -g $GID $USERNAME \
 USER $USERNAME
 
 # Create workspace so that user own this directory
-RUN mkdir -p /home/$USERNAME/ros2_ws/src/VIIIAV55
+RUN mkdir -p /home/$USERNAME/ros2_ws/src
 WORKDIR /home/$USERNAME/ros2_ws
 
 # Copy configuration files
 RUN echo 'source /opt/ros/'$ROS_DISTRO'/setup.bash' >> /home/$USERNAME/.bashrc \
     && echo 'source /home/'$USERNAME'/ros2_ws/install/setup.bash' >> /home/$USERNAME/.bashrc
-
-# Clone repositories
-RUN git clone https://github.com/kroshu/kuka-external-control-sdk.git \
-        /home/${USERNAME}/ros2_ws/src/kuka-external-control-sdk \
-    && git clone -b humble https://github.com/kroshu/kuka_drivers.git \
-        /home/${USERNAME}/ros2_ws/src/kuka_drivers \
-    && git clone -b humble https://github.com/kroshu/kuka_robot_descriptions.git \
-        /home/${USERNAME}/ros2_ws/src/kuka_robot_descriptions
