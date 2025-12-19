@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+   <transport_descriptors>
+      <transport_descriptor>
+         <transport_id>udp_transport</transport_id>
+         <type>UDPv4</type>
+         <!-- Needed for local communication not getting tangled -->
+         <interfaceWhiteList>
+               <address>ip_of_current_device_on_network</address>
+               <address>remote_ip</address>
+         </interfaceWhiteList>
+      </transport_descriptor>
+   </transport_descriptors>
+   <participant profile_name="disable_multicast" is_default_profile="true">
+      <rtps>
+         <builtin>
+            <!-- Needed for this device getting discovered -->
+            <metatrafficUnicastLocatorList>
+               <locator>
+                  <udpv4>
+                     <address>ip_of_current_device_on_network</address>
+                  </udpv4>
+               </locator>
+            </metatrafficUnicastLocatorList>
+            <!-- Needed for this device to only communicate with needed participants -->
+            <initialPeersList>
+               <locator>
+                  <udpv4>
+                     <address>remote_ip</address>
+                  </udpv4>
+               </locator>
+               <locator>
+                  <udpv4>
+                     <address>ip_of_current_device_on_network</address>
+                  </udpv4>
+               </locator>
+            </initialPeersList>
+         </builtin>
+         <useBuiltinTransports>false</useBuiltinTransports>
+         <userTransports>
+            <transport_id>udp_transport</transport_id>
+         </userTransports>
+      </rtps>
+   </participant>
+</profiles>
