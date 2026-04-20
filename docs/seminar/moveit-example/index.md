@@ -148,22 +148,22 @@ Szimuláld a megfogást azzal, hogy a hengert a robot végéhez _kapcsolod_.
 ??? example "Megoldás"
     ```C++
     /* ... */
-    
+
     // TODO 4
     // Find position of the first table
     const auto drop_off_position = GetObjectPosition("table1");
     RCLCPP_INFO(logger, "Target table position: %f %f %f", drop_off_position.x, drop_off_position.y, drop_off_position.z);
-  
+
     // Move the end-effector to the drop off point
     const auto drop_off_pose = [&drop_off_position]
     {
       geometry_msgs::msg::Pose msg;
-  
+
       msg.orientation.x = 0.0;
       msg.orientation.y = std::sin(Constants::PI / 2);
       msg.orientation.z = 0.0;
       msg.orientation.w = std::cos(Constants::PI / 2);
-  
+
       msg.position.x = drop_off_position.x;
       msg.position.y = drop_off_position.y;
       msg.position.z = drop_off_position.z + 0.2 + 0.11 + 1e-3;
@@ -171,7 +171,7 @@ Szimuláld a megfogást azzal, hogy a hengert a robot végéhez _kapcsolod_.
     }();
     move_group_interface.setPlanningTime(15.0);
     MoveToPose(drop_off_pose, move_group_interface, moveit_visual_tools, logger);
-    
+
     /* ... */
     ```
 
@@ -181,6 +181,11 @@ Rakd le a hengert, hogy az asztalra kerüljön.
 
 ??? example "Megoldás"
     ```C++
+    /* ... */
+
+    // TODO 5
     move_group_interface.detachObject("cylinder");
     moveit_visual_tools.prompt("Cylinder detached from the end-effector. Press 'Next' to continue");
+
+    /* ... */
     ```
