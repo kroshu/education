@@ -26,13 +26,21 @@
 /* Make links visually prominent across the site. */
 .md-typeset a,
 .md-typeset a:visited {
-  color: rgb(255 95 0);
+  color: rgb(255, 95, 0);
   font-weight: 600;
 }
 
 .md-typeset a:hover,
 .md-typeset a:focus,
+.md-typeset a:focus-visible,
+.md-nav__link:hover,
+.md-nav__link:focus,
+.md-nav__link:focus-visible,
 .md-nav__link:hover .md-ellipsis,
-.md-nav__link:focus .md-ellipsis {
-  color: rgb(255 95 0 / 0.75);
+.md-nav__link:focus .md-ellipsis,
+.md-nav__link:focus-visible .md-ellipsis,
+.md-tabs__link:hover,
+.md-tabs__link:focus,
+.md-tabs__link:focus-visible {
+  color: rgba(255, 95, 0, 0.75);
 }
