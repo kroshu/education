@@ -20,7 +20,7 @@ A konténer indításához szükséges szoftverek:
 - [Visual Studio Code](https://code.visualstudio.com/) + [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) kiegészítő
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) &ndash; valójában a [Docker Engine](https://docs.docker.com/engine/install/) is elegendő lenne, de a Dev Containerekről szóló dokumentáció is a Desktop verziót ajánlja
 
-Ha ezek mind telepítve vannak, akkor leklónuzhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
+Ha ezek mind telepítve vannak, akkor leklónozhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
 
 ```shell
 git clone https://github.com/kroshu/education.git
