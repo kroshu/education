@@ -19,10 +19,6 @@
   background-color: rgba(17, 24, 39, 0.24);
 }
 
-[data-md-color-primary="custom"] .md-search__input {
-  color: #111827;
-}
-
 [data-md-color-primary="custom"] .md-search__input::placeholder {
   color: #111827
 }
