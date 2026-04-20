@@ -8,5 +8,19 @@ theme:
   language: hu
   logo: img/kuka-logo.svg
   favicon: img/favicon.ico
+  palette:
+    - scheme: default
+      primary: custom
+      toggle:
+        icon: material/brightness-7
+        name: Váltás sötét módra
+    - scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Váltás világos módra
+
+extra_css:
+  - stylesheets/extra.css
 
 copyright: Copyright &copy; KUKA Hungária Kft.
