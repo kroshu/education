@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>None./</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="hu" href="None"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
+    </url>
+    <url>
+        <loc>Noneseminar/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/"/>
+    </url>
+    <url>
+        <loc>Noneseminar/moveit-example/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/moveit-example/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/moveit-example/"/>
+    </url>
+    <url>
+        <loc>Noneseminar/my-controller/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/my-controller/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/my-controller/"/>
+    </url>
+    <url>
+        <loc>Noneen/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
+        <xhtml:link rel="alternate" hreflang="hu" href="None"/>
+    </url>
+    <url>
+        <loc>Noneen/seminar/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/"/>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/"/>
+    </url>
+    <url>
+        <loc>Noneen/seminar/moveit-example/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/moveit-example/"/>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/moveit-example/"/>
+    </url>
+    <url>
+        <loc>Noneen/seminar/my-controller/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/seminar/my-controller/"/>
+        <xhtml:link rel="alternate" hreflang="hu" href="Noneseminar/my-controller/"/>
+    </url>
+</urlset>
