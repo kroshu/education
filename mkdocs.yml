@@ -10,7 +10,7 @@ nav:
 theme:
   name: material
   language: hu
-  logo: img/kuka-logo.svg
+  logo: img/logo.png
   favicon: img/favicon.ico
   font:
     text: Roboto
