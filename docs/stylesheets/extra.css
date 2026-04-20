@@ -22,3 +22,25 @@
 [data-md-color-primary="custom"] .md-search__input::placeholder {
   color: #111827
 }
+
+/* Make links visually prominent across the site. */
+a,
+a:visited {
+  color: #0B57D0;
+  font-weight: 700;
+}
+
+a:hover,
+a:focus {
+  color: #084298;
+}
+
+[data-md-color-scheme="slate"] a,
+[data-md-color-scheme="slate"] a:visited {
+  color: #8AB4F8;
+}
+
+[data-md-color-scheme="slate"] a:hover,
+[data-md-color-scheme="slate"] a:focus {
+  color: #AECBFA;
+}

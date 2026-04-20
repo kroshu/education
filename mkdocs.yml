@@ -2,6 +2,10 @@ site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
 
 nav:
   - Robot operációs rendszerek és fejlesztői ökoszisztémák: index.md
+  - Gyakorlat:
+    - seminar/index.md
+    - "Robot vezérlése saját kontrollerrel": seminar/my-controller/index.md
+    - "Robot mozgatása MoveIt segítségével": seminar/moveit-example/index.md
 
 theme:
   name: material
@@ -22,5 +26,10 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 
 copyright: Copyright &copy; KUKA Hungária Kft.
