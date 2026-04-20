@@ -6,6 +6,7 @@ nav:
 theme:
   name: material
   language: hu
+  logo: img/kuka-logo.svg
   favicon: img/favicon.ico
 
 copyright: Copyright &copy; KUKA Hungária Kft.
