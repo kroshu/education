@@ -33,4 +33,4 @@ After that, start the [Docker daemon](https://docs.docker.com/engine/daemon/star
 If you want to set up the environment from the **KUKA network**, first obtain the KUKA root certificate and place it in `.devcontainer/certs`. In addition, uncomment the section after the `mounts` key in `.devcontainer/devcontainer.json`. After that, everything is the same as above.
 
 !!! note "Note"
-    The above flow was also tested with [Podman Desktop](https://podman-desktop.io/), which is an open-source alternative to Docker Desktop. Podman-specific settings are documented in the [VS Code docs](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman).
+    The above flow was tested with [Podman Desktop](https://podman-desktop.io/), which is an open-source alternative to Docker Desktop. Podman-specific settings are documented in the [VS Code docs](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman).
