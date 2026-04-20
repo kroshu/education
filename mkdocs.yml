@@ -12,6 +12,9 @@ theme:
   language: hu
   logo: img/kuka-logo.svg
   favicon: img/favicon.ico
+  font:
+    text: Roboto
+    code: Roboto Mono
   palette:
     - scheme: default
       primary: custom
@@ -24,8 +27,38 @@ theme:
         icon: material/brightness-4
         name: Váltás világos módra
 
+extra:
+  alternate:
+    - name: Magyar
+      link: ./
+      lang: hu
+    - name: English
+      link: en/
+      lang: en
+
 extra_css:
   - stylesheets/extra.css
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      languages:
+        - locale: hu
+          name: Magyar
+          site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
+          default: true
+          build: true
+        - locale: en
+          name: English
+          site_name: Robot Operating Systems and Development Ecosystems
+          build: true
+          nav_translations:
+            Robot operációs rendszerek és fejlesztői ökoszisztémák: Robot Operating Systems and Development Ecosystems
+            Gyakorlat: Practice
+            Robot vezérlése saját kontrollerrel: Robot Control with a Custom Controller
+            Robot mozgatása MoveIt segítségével: Robot Motion with MoveIt
 
 markdown_extensions:
   - admonition

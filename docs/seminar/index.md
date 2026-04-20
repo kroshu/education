@@ -8,7 +8,7 @@ A gyakorlat során két fő témakörrel foglalkozunk:
 Célunk továbbá, hogy mindenkinél legyen egy működőképes ROS 2 fejlesztői környezet.
 
 !!! note "Megjegyzés"
-    A feladatok megoldása elérhető az útmutatóban, illetve az `education` repóban is megtalálhatató a kész megoldás a [`humble`](https://github.com/kroshu/education/tree/humble/VIIIAV55) branchen.
+    A feladatok megoldása elérhető az útmutatóban, illetve az `education` repóban is megtalálhatató a kész megoldás a [`humble` branchen](https://github.com/kroshu/education/tree/humble/VIIIAV55).
 
 ## Fejlesztői környezet előkészítése
 
