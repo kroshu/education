@@ -9,3 +9,4 @@ Gyakorlati anyagok és házi feladatok a **VIIIAV55 Robot operációs rendszerek
 - [ros2_control](https://github.com/ros-controls/ros2_control)
 - [MoveIt 2](https://github.com/moveit/moveit2)
 - [Sajtómegjelenés](https://www.linkedin.com/posts/kukaglobal_a-kuka-%C3%A9s-a-bme-budapest-university-of-activity-7229396384574013440-LHqc/)
+- [RobonAUT running on ROS 2](https://www.linkedin.com/posts/tam%C3%A1s-pep%C3%B3-b9188169_we-do-what-we-love-robotics-ros-2-and-ugcPost-7432334437499076608-Dce-/)
