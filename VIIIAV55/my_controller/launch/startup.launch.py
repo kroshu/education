@@ -74,6 +74,17 @@ def generate_launch_description():
         ],
     )
 
+    event_broadcaster = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "event_broadcaster",
+            "-c",
+            "/controller_manager",
+            "--inactive",
+        ],
+    )
+
     my_controller = Node(
         package="controller_manager",
         executable="spawner",
@@ -112,6 +123,7 @@ def generate_launch_description():
             robot_manager_node,
             robot_state_publisher,
             joint_state_broadcaster,
+            event_broadcaster,
             my_controller,
             rviz,
         ]
