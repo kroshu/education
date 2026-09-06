@@ -3,6 +3,9 @@ site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
 nav:
   - Robot operációs rendszerek és fejlesztői ökoszisztémák: index.md
   - Gyakorlatok:
+    - seminars/index.md
+    - 1. gyakorlat:
+      - seminars/seminar-1/index.md
     - 2. gyakorlat:
       - seminars/seminar-2/index.md
       - "Robot vezérlése saját kontrollerrel": seminars/seminar-2/my-controller/index.md
@@ -49,6 +52,7 @@ plugins:
           nav_translations:
             Robot operációs rendszerek és fejlesztői ökoszisztémák: Robot Operating Systems and Development Ecosystems
             Gyakorlatok: Practices
+            1. gyakorlat: 1st Practice
             2. gyakorlat: 2nd Practice
             Robot vezérlése saját kontrollerrel: Robot Control with a Custom Controller
             Robot mozgatása MoveIt segítségével: Robot Motion with MoveIt
