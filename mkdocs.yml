@@ -4,9 +4,9 @@ nav:
   - Robot operációs rendszerek és fejlesztői ökoszisztémák: index.md
   - Gyakorlatok:
     - 2. gyakorlat:
-      - seminar/index.md
-      - "Robot vezérlése saját kontrollerrel": seminar/my-controller/index.md
-      - "Robot mozgatása MoveIt segítségével": seminar/moveit-example/index.md
+      - seminars/seminar-2/index.md
+      - "Robot vezérlése saját kontrollerrel": seminars/seminar-2/my-controller/index.md
+      - "Robot mozgatása MoveIt segítségével": seminars/seminar-2/moveit-example/index.md
 
 theme:
   name: material
