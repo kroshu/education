@@ -2,10 +2,11 @@ site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
 
 nav:
   - Robot operációs rendszerek és fejlesztői ökoszisztémák: index.md
-  - Gyakorlat:
-    - seminar/index.md
-    - "Robot vezérlése saját kontrollerrel": seminar/my-controller/index.md
-    - "Robot mozgatása MoveIt segítségével": seminar/moveit-example/index.md
+  - Gyakorlatok:
+    - 2. gyakorlat:
+      - seminar/index.md
+      - "Robot vezérlése saját kontrollerrel": seminar/my-controller/index.md
+      - "Robot mozgatása MoveIt segítségével": seminar/moveit-example/index.md
 
 theme:
   name: material
@@ -27,15 +28,6 @@ theme:
         icon: material/brightness-4
         name: Váltás világos módra
 
-extra:
-  alternate:
-    - name: Magyar
-      link: ./
-      lang: hu
-    - name: English
-      link: en/
-      lang: en
-
 extra_css:
   - stylesheets/extra.css
 
@@ -56,7 +48,8 @@ plugins:
           build: true
           nav_translations:
             Robot operációs rendszerek és fejlesztői ökoszisztémák: Robot Operating Systems and Development Ecosystems
-            Gyakorlat: Practice
+            Gyakorlatok: Practices
+            2. gyakorlat: 2nd Practice
             Robot vezérlése saját kontrollerrel: Robot Control with a Custom Controller
             Robot mozgatása MoveIt segítségével: Robot Motion with MoveIt
 
