@@ -15,13 +15,29 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 add_executable(talker src/publisher.cpp)
+add_executable(listener src/subscriber.cpp)
 ament_target_dependencies(talker rclcpp std_msgs)
+ament_target_dependencies(listener rclcpp std_msgs)
 
 install(TARGETS
   talker
   DESTINATION lib/${PROJECT_NAME})
 
+install(TARGETS
+  listener
+  DESTINATION lib/${PROJECT_NAME})
+
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
+
 target_include_directories(talker PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+target_include_directories(listener PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
