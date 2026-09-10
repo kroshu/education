@@ -31,6 +31,10 @@ install(
   DIRECTORY include/
   DESTINATION include
 )
+install(
+  DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}
+)
 
 target_include_directories(talker PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

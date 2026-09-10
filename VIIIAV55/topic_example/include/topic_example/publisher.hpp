@@ -23,6 +23,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     size_t count_;
     std::string to_greet;
+    std::string greeting;
 };
 
 }
