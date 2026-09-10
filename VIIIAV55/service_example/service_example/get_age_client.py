@@ -34,6 +34,8 @@ def main():
 
     client = GetAgeClient()
     future = client.send_request()
+
+    #Only spin until the future is complete
     rclpy.spin_until_future_complete(client, future)
     response = future.result()
     client.logger.info(f'Result of get_age: {response.age}')
