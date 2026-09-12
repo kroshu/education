@@ -1,0 +1,1204 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../seminar-2/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="hu">
+        
+          <link rel="alternate" href="../../en/seminars/seminar-1/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ROS 2 alapok - Robot operációs rendszerek és fejlesztői ökoszisztémák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros-2-alapok" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../.." title="Robot operációs rendszerek és fejlesztői ökoszisztémák" class="md-header__button md-logo" aria-label="Robot operációs rendszerek és fejlesztői ökoszisztémák" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robot operációs rendszerek és fejlesztői ökoszisztémák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ROS 2 alapok
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Váltás sötét módra"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét módra" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Váltás világos módra"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos módra" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Nyelvváltás">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="hu" class="md-select__link">
+              Magyar
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/seminars/seminar-1/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Robot operációs rendszerek és fejlesztői ökoszisztémák" class="md-nav__button md-logo" aria-label="Robot operációs rendszerek és fejlesztői ökoszisztémák" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Robot operációs rendszerek és fejlesztői ökoszisztémák
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot operációs rendszerek és fejlesztői ökoszisztémák
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gyakorlatok
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gyakorlatok
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fejlesztői környezet előkészítése
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. gyakorlat
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1. gyakorlat
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS 2 alapok
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS 2 alapok
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-munkakornyezet-workspace-felepitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Munkakörnyezet (Workspace) felépítése
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ros-2-csomag-package-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ROS 2 csomag (Package) létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-az-elso-node-megirasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Az első Node megírása
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-node-ok-kozotti-kommunikacio-i-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Node-ok közötti kommunikáció I.: Topic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Node-ok közötti kommunikáció I.: Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publisher-node-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publisher node létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriber-node-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscriber node létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-node-ok-kozotti-kommunikacio-ii-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Node-ok közötti kommunikáció II.: Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Node-ok közötti kommunikáció II.: Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sajat-interfesz-definialasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saját interfész definiálása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-szerver-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service szerver létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-kliens-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service kliens létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hasznos-parancssori-eszkozok-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hasznos parancssori eszközök (CLI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ha-tobbre-vagy-kivancsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ha többre vagy kíváncsi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. gyakorlat
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. gyakorlat
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gyakorlat menete
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-2/my-controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot vezérlése saját kontrollerrel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-2/moveit-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot mozgatása MoveIt segítségével
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-munkakornyezet-workspace-felepitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Munkakörnyezet (Workspace) felépítése
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ros-2-csomag-package-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ROS 2 csomag (Package) létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-az-elso-node-megirasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Az első Node megírása
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-node-ok-kozotti-kommunikacio-i-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Node-ok közötti kommunikáció I.: Topic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Node-ok közötti kommunikáció I.: Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publisher-node-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publisher node létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscriber-node-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscriber node létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-node-ok-kozotti-kommunikacio-ii-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Node-ok közötti kommunikáció II.: Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Node-ok közötti kommunikáció II.: Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sajat-interfesz-definialasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saját interfész definiálása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-szerver-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service szerver létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-kliens-letrehozasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service kliens létrehozása
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hasznos-parancssori-eszkozok-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hasznos parancssori eszközök (CLI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ha-tobbre-vagy-kivancsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ha többre vagy kíváncsi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ros-2-alapok">ROS 2 alapok</h1>
+<p>Ezen a gyakorlaton a ROS 2 alapjaival ismerkedünk meg. A cél az, hogy a gyakorlat végére mindenki kényelmesen el tudjon navigálni egy munkakörnyezeten belül, megértse a ROS 2 alapvető node-alapú architektúráját, és képes legyen mind Publish/Subscribe (Topic), mind Client/Server (Service) kommunikációt megvalósítani.</p>
+<div class="admonition note">
+<p class="admonition-title">Megjegyzés</p>
+<p>A feladatok megoldása elérhető az útmutatóban, illetve az <code>education</code> repóban is megtalálható a kész megoldás a <a href="https://github.com/kroshu/education/tree/humble/VIIIAV55"><code>humble</code> branchen</a>.</p>
+</div>
+<h2 id="1-munkakornyezet-workspace-felepitese">1. Munkakörnyezet (Workspace) felépítése</h2>
+<ul>
+<li>Mi az a <code>colcon</code> és a workspace szerkezete (<code>src</code>, <code>build</code>, <code>install</code>, <code>log</code>)</li>
+<li>Környezeti változók beállítása (<code>source install/setup.bash</code>)</li>
+</ul>
+<h2 id="2-ros-2-csomag-package-letrehozasa">2. ROS 2 csomag (Package) létrehozása</h2>
+<p>Hozz létre egy új Python alapú ROS 2 csomagot. Ehhez használd a <code>ros2 pkg create</code> parancsot.</p>
+<p>Vizsgáld is meg a csomag tartalmát.</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="go">ros2 pkg create --build-type ament_python --node-name my_first_node --destination-directory src/VIIIAV55/ my_first_node</span>
+</code></pre></div>
+</details>
+<h2 id="3-az-elso-node-megirasa">3. Az első Node megírása</h2>
+<p>Az újonnan létrehozott csomagban hozz létre egy osztályt, ami <code>Node</code> ősből származik le. Ennek az osztálynak legyen egy függvénye, amit meg tudunk hívni és kiír valamit a konzolra.</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyFirstNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"my_first_node_name"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">func_call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Something, something..."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">MyFirstNode</span><span class="p">()</span>
+    <span class="n">n</span><span class="o">.</span><span class="n">func_call</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<h2 id="4-node-ok-kozotti-kommunikacio-i-topic">4. Node-ok közötti kommunikáció I.: Topic</h2>
+<p>Nyisd meg a <code>publisher.cpp</code> fájlt. Ebbe a fájlba fogsz létrehozni egy topic-ot.</p>
+<h3 id="publisher-node-letrehozasa">Publisher node létrehozása</h3>
+<p>Hozz létre egy node-ot, aminek van két paramétere, <code>greeting</code> és <code>to_greet</code>. Ezeket a paramétereket egy üzenet formájában írja ki a node a korábban létrehozott topic-ra másodpercenként. Figyelj oda arra, hogy a paraméterek értékei futásidőben is megváltozhatnak!</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// MinimalPublisher::MinimalPublisher()</span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">"to_greet"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">);</span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">);</span>
+
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">to_greet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">"to_greet"</span><span class="p">).</span><span class="n">as_string</span><span class="p">();</span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">).</span><span class="n">as_string</span><span class="p">();</span>
+
+<span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"topic"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="mi">1000</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+
+<span class="c1">// MinimalPublisher::timer_callback()</span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">"to_greet"</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">to_greet</span><span class="p">);</span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">greeting</span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">greeting</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">to_greet</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"! "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span>
+<span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">"Publishing: '%s'"</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</code></pre></div>
+</details>
+<h3 id="subscriber-node-letrehozasa">Subscriber node létrehozása</h3>
+<p>Most, hogy létrehoztál egy publishert, készíts egy olyan node-ot is, ami feliratkozik a kipublikált üzenetekre a <code>subscriber.cpp</code> fájlban.</p>
+<p>Készíts egy olyan osztályt, ami feliratkozik a korábban létrehozott topic-ra és kiírja a konzolra a kapott üzenetet. </p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// MinimalSubscriber::MinimalSubscriber()</span>
+<span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="s">"topic"</span><span class="p">,</span>
+<span class="mi">10</span><span class="p">,</span>
+<span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">MinimalSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span>
+<span class="w">    </span><span class="k">this</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+
+<span class="c1">// MinimalSubscriber::topic_callback()</span>
+<span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">"I heard: '%s'"</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</code></pre></div>
+</details>
+<h2 id="5-node-ok-kozotti-kommunikacio-ii-service">5. Node-ok közötti kommunikáció II.: Service</h2>
+<p>Eddig láthattuk azt, hogy miképpen válthat üzenetet két node, amelyek adatfolyam-alapon működnek. Most megismerkedünk a kérés-válasz alapú node-ok világával is. Ehhez egy olyan service-t hozunk létre, amely a megadott születési dátum alapján kiszámítja az életkort.</p>
+<h3 id="sajat-interfesz-definialasa">Saját interfész definiálása</h3>
+<p>A ROS 2 világában rengeteg <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html">üzenettípust definiáltak</a> már korábban. Ugyanakkor előfordulhat, hogy valami sajátos interfészre lenne szükségünk. Természetesen erre is van lehetőségünk. Ehhez használjuk a <code>GetAge.srv</code> fájlt.</p>
+<p>Definiálj egy olyan interfészt, amely egy születési dátumot (<code>string</code>) fogad és egy életkorral (<code>int64</code>) válaszol.</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code>string birth_date
+---
+int64 age
+</code></pre></div>
+</details>
+<h3 id="service-szerver-letrehozasa">Service szerver létrehozása</h3>
+<p>Nyisd meg a <code>get_age_server.py</code> fájlt. Ebben definiáld azt a servicet, ami <code>GetAge</code> típusú interfészen keresztül kommunikál. Amikor ez a service egy kérést kap, válaszoljon a dátum alapján kiszámított életkorral.</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># __init__</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">GetAge</span><span class="p">,</span> <span class="s2">"get_age"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_age_callback</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"GetAge server successfully initialized"</span><span class="p">)</span>
+
+<span class="c1"># get_age_callback</span>
+<span class="n">birth_string</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">birth_date</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">birth</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">birth_string</span><span class="p">,</span> <span class="s2">"%Y.%m.</span><span class="si">%d</span><span class="s2">."</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">response</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">today</span><span class="o">.</span><span class="n">year</span>
+    <span class="o">-</span> <span class="n">birth</span><span class="o">.</span><span class="n">year</span>
+    <span class="o">-</span> <span class="p">((</span><span class="n">today</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">day</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">birth</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">birth</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"For birth date </span><span class="si">{</span><span class="n">birth_string</span><span class="si">}</span><span class="s2"> sending back age: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">"</span>
+<span class="p">)</span>
+</code></pre></div>
+</details>
+<h3 id="service-kliens-letrehozasa">Service kliens létrehozása</h3>
+<p>A <code>get_age_client.py</code> fájlon belül most hozz létre egy olyan node-ot, ami egy paraméteren keresztül beállított dátummal meghívja a szervert. Fontos, hogy a kliens megvárja, amíg a szerver elérhetővé válik.</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># __init__</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s2">"birth_date"</span><span class="p">,</span> <span class="s2">"1990.01.01."</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">birth_date</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s2">"birth_date"</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">string_value</span>
+<span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">cli</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">GetAge</span><span class="p">,</span> <span class="s2">"get_age"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"service not available, waiting again..."</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">req</span> <span class="o">=</span> <span class="n">GetAge</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"GetAge client succesfully initialized"</span><span class="p">)</span>
+
+<span class="c1"># send_request</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Sending request to get_age service with birth date: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">birth_date</span><span class="si">}</span><span class="s2">"</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="o">.</span><span class="n">birth_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">birth_date</span>
+<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">req</span><span class="p">)</span>
+
+<span class="c1"># main</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">GetAgeClient</span><span class="p">()</span>
+<span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">send_request</span><span class="p">()</span>
+
+<span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">future</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Result of get_age: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<h2 id="6-hasznos-parancssori-eszkozok-cli">6. Hasznos parancssori eszközök (CLI)</h2>
+<ul>
+<li><code>ros2 node list</code> / <code>ros2 node info</code></li>
+<li><code>ros2 topic list</code> / <code>ros2 topic echo</code> / <code>ros2 topic pub</code></li>
+<li><code>ros2 service list</code> / <code>ros2 service call</code> / <code>ros2 service type</code></li>
+<li><code>rqt</code></li>
+</ul>
+<h2 id="ha-tobbre-vagy-kivancsi">Ha többre vagy kíváncsi</h2>
+<ul>
+<li><a href="https://docs.ros.org/en/humble/Tutorials.html">Hivatalos ROS 2 útmutatók</a></li>
+<li><a href="https://www.youtube.com/@kevinwoodrobotics/videos">Kevin Wood YouTube csatornája</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; KUKA Hungária Kft.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

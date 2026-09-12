@@ -1,0 +1,46 @@
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #EDEDEE;
+  --md-primary-bg-color: #111827;
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color: hsla(0, 0%, 8%, 0.95);
+  --md-default-fg-color--light: hsla(0, 0%, 8%, 0.78);
+  --md-default-fg-color--lighter: hsla(0, 0%, 8%, 0.58);
+  --md-typeset-a-color: #111827;
+}
+
+[data-md-color-primary="custom"] .md-search__form {
+  background-color: rgba(17, 24, 39, 0.14);
+}
+
+[data-md-color-primary="custom"] .md-search__form:hover,
+[data-md-color-primary="custom"] .md-search__form:focus-within {
+  background-color: rgba(17, 24, 39, 0.24);
+}
+
+[data-md-color-primary="custom"] .md-search__input::placeholder {
+  color: #111827;
+}
+
+/* Make links visually prominent across the site. */
+.md-typeset a,
+.md-typeset a:visited {
+  color: rgb(255, 95, 0);
+  font-weight: 600;
+}
+
+.md-typeset a:hover,
+.md-typeset a:focus,
+.md-typeset a:focus-visible,
+.md-nav__link:hover,
+.md-nav__link:focus,
+.md-nav__link:focus-visible,
+.md-nav__link:hover .md-ellipsis,
+.md-nav__link:focus .md-ellipsis,
+.md-nav__link:focus-visible .md-ellipsis,
+.md-tabs__link:hover,
+.md-tabs__link:focus,
+.md-tabs__link:focus-visible {
+  color: rgba(255, 95, 0, 0.75);
+}
