@@ -1,0 +1,65 @@
+site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
+
+nav:
+  - Robot operációs rendszerek és fejlesztői ökoszisztémák: index.md
+  - Gyakorlatok:
+    - seminars/index.md
+    - 1. gyakorlat:
+      - seminars/seminar-1/index.md
+    - 2. gyakorlat:
+      - seminars/seminar-2/index.md
+      - "Robot vezérlése saját kontrollerrel": seminars/seminar-2/my-controller/index.md
+      - "Robot mozgatása MoveIt segítségével": seminars/seminar-2/moveit-example/index.md
+
+theme:
+  name: material
+  language: hu
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      primary: custom
+      toggle:
+        icon: material/brightness-7
+        name: Váltás sötét módra
+    - scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Váltás világos módra
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      languages:
+        - locale: hu
+          name: Magyar
+          site_name: Robot operációs rendszerek és fejlesztői ökoszisztémák
+          default: true
+          build: true
+        - locale: en
+          name: English
+          site_name: Robot Operating Systems and Development Ecosystems
+          build: true
+          nav_translations:
+            Robot operációs rendszerek és fejlesztői ökoszisztémák: Robot Operating Systems and Development Ecosystems
+            Gyakorlatok: Practices
+            1. gyakorlat: 1st Practice
+            2. gyakorlat: 2nd Practice
+            Robot vezérlése saját kontrollerrel: Robot Control with a Custom Controller
+            Robot mozgatása MoveIt segítségével: Robot Motion with MoveIt
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+copyright: Copyright &copy; KUKA Hungária Kft.
