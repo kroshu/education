@@ -1,0 +1,29 @@
+#ifndef TOPIC_EXAMPLE__MINIMAL_PUBLISHER_H_
+#define TOPIC_EXAMPLE__MINIMAL_PUBLISHER_H_
+
+#include <chrono>
+#include <memory>
+#include <string>
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+namespace publisher_example
+{
+    class MinimalPublisher : public rclcpp::Node
+    {
+    public:
+        MinimalPublisher();
+
+    private:
+        void timer_callback();
+
+        rclcpp::TimerBase::SharedPtr timer_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+        size_t count_;
+        std::string to_greet;
+        std::string greeting;
+    };
+}
+
+#endif // TOPIC_EXAMPLE__MINIMAL_PUBLISHER_H_

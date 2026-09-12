@@ -6,6 +6,11 @@ belül, megértse a ROS 2 alapvető node-alapú architektúráját, és képes l
 mind Publish/Subscribe (Topic), mind Client/Server (Service) kommunikációt
 megvalósítani.
 
+!!! note "Megjegyzés"
+    A feladatok megoldása elérhető az útmutatóban, illetve az `education`
+    repóban is megtalálhatató a kész megoldás a
+    [`humble` branchen](https://github.com/kroshu/education/tree/humble/VIIIAV55).
+
 ## 1. Munkakörnyezet (Workspace) felépítése
 
 - Mi az a `colcon` és a workspace szerkezete (`src`, `build`, `install`, `log`)
