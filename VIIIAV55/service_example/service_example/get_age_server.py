@@ -11,27 +11,20 @@ class GetAgeServer(Node):
         super().__init__("get_age_server")
         self.logger = self.get_logger()
 
+        # TODO 1
         # Create a server for the GetAge service
-        self.srv = self.create_service(GetAge, "get_age", self.get_age_callback)
-
-        self.logger.info("GetAge server succesfully initialized")
+        # ...
 
     def get_age_callback(self, request, response):
         self.logger.info("GetAge service request received")
 
-        # Parse the birth date from the request and calculate the age
-        birth_string = request.birth_date.lower().strip()
-        birth = datetime.strptime(birth_string, "%Y.%m.%d.").date()
+        # TODO 2
+        # Parse the birth date from the request
+        # ...
 
-        today = date.today()
-        response.age = (
-            today.year
-            - birth.year
-            - ((today.month, today.day) < (birth.month, birth.day))
-        )
-        self.logger.info(
-            f"For birth date {birth_string} sending back age: {response.age}"
-        )
+        # TODO 3
+        # Calculate the user's age
+        # ...
 
         return response
 

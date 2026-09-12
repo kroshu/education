@@ -11,27 +11,36 @@ namespace publisher_example
 {
     MinimalPublisher::MinimalPublisher() : Node("minimal_publisher"), count_(0)
     {
-        this->declare_parameter("to_greet", "world");
-        this->to_greet = this->get_parameter("to_greet").as_string();
+        // TODO 1
+        // Declare parameters for the greeting and the name to greet
+        // ...
 
-        this->declare_parameter("greeting", "Hello");
-        this->greeting = this->get_parameter("greeting").as_string();
+        // TODO 2
+        // Get the initial values of the parameters
+        // ...
 
-        publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
-        timer_ = this->create_wall_timer(1000ms, std::bind(&MinimalPublisher::timer_callback, this));
+        // TODO 3
+        // Create a publisher for std_msgs::msg::String messages on the "topic" topic
+        // ...
+
+        // TODO 4
+        // Create a timer that calls the timer_callback function every second
+        // ...
     }
 
     void MinimalPublisher::timer_callback()
     {
+        // TODO 5
         // Update parameters in case they were changed
-        this->get_parameter("to_greet", this->to_greet);
-        this->get_parameter("greeting", this->greeting);
+        // ...
 
-        // Send a message with the current parameters
-        auto message = std_msgs::msg::String();
-        message.data = this->greeting + ", " + this->to_greet + "! " + std::to_string(count_++);
-        RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-        publisher_->publish(message);
+        // TODO 6
+        // Create a std_msgs::msg::String message and populate it with the greeting and name
+        // ...
+
+        // TODO 7
+        // Log the message and publish it
+        // ...
     }
 }
 

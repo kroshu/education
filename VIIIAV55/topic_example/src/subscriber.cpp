@@ -7,18 +7,16 @@ namespace subscriber_example
 {
     MinimalSubscriber::MinimalSubscriber() : Node("minimal_subscriber")
     {
-        subscription_ = this->create_subscription<std_msgs::msg::String>(
-            "topic",
-            10,
-            std::bind(
-                &MinimalSubscriber::topic_callback,
-                this,
-                std::placeholders::_1));
+        // TODO 1
+        // Create a subscription for std_msgs::msg::String messages on the "topic" topic
+        // ...
     }
 
     void MinimalSubscriber::topic_callback(const std_msgs::msg::String::SharedPtr msg)
     {
-        RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+        // TODO 2
+        // Log the received message
+        // ...
     }
 } // namespace subscriber_example
 
