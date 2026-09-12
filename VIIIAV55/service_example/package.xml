@@ -7,11 +7,6 @@
   <maintainer email="kiss.anna203@gmail.com">Kiss Anna</maintainer>
   <license>Apache-2.0</license>
 
-  <test_depend>ament_copyright</test_depend>
-  <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
-  <test_depend>python3-pytest</test_depend>
-
   <depend>interfaces</depend>
   <exec_depend>ros2launch</exec_depend>
 
