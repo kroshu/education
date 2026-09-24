@@ -18,12 +18,12 @@ Vizsgáld is meg a csomag tartalmát.
 
 ??? example "Megoldás"
     ```console
-    ros2 pkg create --build-type ament_python --node-name my_first_node --destination-directory src/VIIIAV55/ my_first_node
+    ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name my_first_node --destination-directory src/VIIIAV55/ my_first_pkg
     ```
 
 ## 3. Az első Node megírása
 
-Az újonnan létrehozott csomagban hozz létre egy osztályt, ami `Node` ősből származik le. Ennek az osztálynak legyen egy függvénye, amit meg tudunk hívni és kiír valamit a konzolra.
+Az újonnan létrehozott csomag `my_firt_node.py` fájljában hozz létre egy osztályt, ami `Node` ősből származik le. Ennek az osztálynak legyen egy függvénye, amit meg tudunk hívni és kiír valamit a konzolra.
 
 ??? example "Megoldás"
     ```python
@@ -50,26 +50,57 @@ Az újonnan létrehozott csomagban hozz létre egy osztályt, ami `Node` ősből
         main()
     ```
 
+Az új node kipróbálásához először egy terminálban szükséges buildelni a package-et. A jelenlegi felállás mellett érdemes kizárólag ezt az egy package-et buildelni, valamint a --symlink-install opciót használni, így elkerülhetők a későbbi, szükségtelen újrabuildelések.
+
+??? example "Megoldás"
+    ```console
+    colcon build --packages-select my_first_pkg --symlink-install
+    ```
+
+A node futtatásához érdemes egy új terminált nyitni, majd abban a megfelelő környezetet source-olni. Ezt követően a node elindítható. 
+
+!!! note "Megjegyzés"
+  A --symlink-install opció használatának köszönhetően python package esetén a kódban végzett módosítások mentés után automatikusan érvényre jutnak a következő futtatáskor, így nincs szükség újabb buildelésre minden egyes változtatás után.
+
+??? example "Megoldás"
+    ```console
+    source install/setup.bash
+    ros2 run my_first_pkg my_first_node
+    ```
+
 ## 4. Node-ok közötti kommunikáció I.: Topic
 
 Nyisd meg a `publisher.cpp` fájlt. Ebbe a fájlba fogsz létrehozni egy topic-ot.
 
 ### Publisher node létrehozása
 
-Hozz létre egy node-ot, aminek van két paramétere, `greeting` és `to_greet`. Ezeket a paramétereket egy üzenet formájában írja ki a node a korábban létrehozott topic-ra másodpercenként. Figyelj oda arra, hogy a paraméterek értékei futásidőben is megváltozhatnak!
+Hozz létre egy node-ot, aminek van két paramétere, `greeting` és `to_greet`.
+
+??? example "Megoldás"
+    ```cpp
+      // MinimalPublisher::MinimalPublisher()
+      this->declare_parameter("to_greet", "world");
+      this->declare_parameter("greeting", "Hello");
+      
+      this->to_greet = this->get_parameter("to_greet").as_string();
+      this->greeting = this->get_parameter("greeting").as_string();
+    ```
+!!! note "Megjegyzés"
+  A paraméterek beolvásának típusát meg kell adni
+
+Hozz létre egy topic nevű, string típusú publishert, és definiálj egy 1 másodperces periódusidejű timert, amely a publikálásért felelős callback függvényt ütemezi.
 
 ??? example "Megoldás"
     ```cpp
     // MinimalPublisher::MinimalPublisher()
-    this->declare_parameter("to_greet", "world");
-    this->declare_parameter("greeting", "Hello");
-    
-    this->to_greet = this->get_parameter("to_greet").as_string();
-    this->greeting = this->get_parameter("greeting").as_string();
-
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(1000ms, std::bind(&MinimalPublisher::timer_callback, this));
+    ```
 
+A beolvasott paramétereket egy üzenet formájában írja ki a node a korábban létrehozott topic-ra. Figyelj oda arra, hogy a paraméterek értékei futásidőben is megváltozhatnak!
+
+??? example "Megoldás"
+    ```cpp    
     // MinimalPublisher::timer_callback()
     this->get_parameter("to_greet", this->to_greet);
     this->get_parameter("greeting", this->greeting);
@@ -96,7 +127,10 @@ Készíts egy olyan osztályt, ami feliratkozik a korábban létrehozott topic-r
         &MinimalSubscriber::topic_callback,
         this,
         std::placeholders::_1));
+    ```
 
+??? example "Megoldás"
+    ```cpp    
     // MinimalSubscriber::topic_callback()
     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
     ```
@@ -117,17 +151,24 @@ Definiálj egy olyan interfészt, amely egy születési dátumot (`string`) foga
     ---
     int64 age
     ```
+!!! note "Megjegyzés"
+  Üzenet típusokat (`.msg`, `.srv`, `.action`) csak CPP package-ben lehet létrehozni. Egy nagy projektben érdemes a saját tpusokat külön package-be szervezni.
 
 ### Service szerver létrehozása
 
-Nyisd meg a `get_age_server.py` fájlt. Ebben definiáld azt a servicet, ami `GetAge` típusú interfészen keresztül kommunikál. Amikor ez a service egy kérést kap, válaszoljon a dátum alapján kiszámított életkorral.
+Nyisd meg a `get_age_server.py` fájlt. Ebben definiáld azt a `get_age` nevű servicet, ami `GetAge` típusú interfészen keresztül kommunikál.
 
 ??? example "Megoldás"
     ```python
     # __init__
     self.srv = self.create_service(GetAge, "get_age", self.get_age_callback)
     self.logger.info("GetAge server successfully initialized")
+    ```
 
+Amikor ez a service egy kérést kap, válaszoljon a dátum alapján kiszámított életkorral.
+
+??? example "Megoldás"
+    ```python
     # get_age_callback
     birth_string = request.birth_date.lower().strip()
     birth = datetime.strptime(birth_string, "%Y.%m.%d.").date()
@@ -162,14 +203,19 @@ A `get_age_client.py` fájlon belül most hozz létre egy olyan node-ot, ami egy
 
     self.req = GetAge.Request()
     self.logger.info("GetAge client succesfully initialized")
-
+    ```
+??? example "Megoldás"
+    ```python    
     # send_request
     self.logger.info(
         f"Sending request to get_age service with birth date: {self.birth_date}"
     )
     self.req.birth_date = self.birth_date
     return self.cli.call_async(self.req)
+    ```
 
+??? example "Megoldás"
+    ```python
     # main
     client = GetAgeClient()
     future = client.send_request()
