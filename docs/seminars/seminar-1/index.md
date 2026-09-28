@@ -59,14 +59,15 @@ Az új node kipróbálásához először egy terminálban szükséges buildelni 
 
 A node futtatásához érdemes egy új terminált nyitni, majd abban a megfelelő környezetet source-olni. Ezt követően a node elindítható. 
 
-!!! note "Megjegyzés"
-  A --symlink-install opció használatának köszönhetően python package esetén a kódban végzett módosítások mentés után automatikusan érvényre jutnak a következő futtatáskor, így nincs szükség újabb buildelésre minden egyes változtatás után.
-
 ??? example "Megoldás"
     ```console
     source install/setup.bash
     ros2 run my_first_pkg my_first_node
     ```
+!!! note "Megjegyzés"
+    A --symlink-install opció használatának köszönhetően python package esetén a kódban végzett módosítások mentés után automatikusan érvényre jutnak a következő futtatáskor, így nincs szükség újabb buildelésre minden egyes változtatás után.
+
+
 
 ## 4. Node-ok közötti kommunikáció I.: Topic
 
@@ -86,7 +87,7 @@ Hozz létre egy node-ot, aminek van két paramétere, `greeting` és `to_greet`.
       this->greeting = this->get_parameter("greeting").as_string();
     ```
 !!! note "Megjegyzés"
-  A paraméterek beolvásának típusát meg kell adni
+    A paraméterek beolvásának típusát meg kell adni
 
 Hozz létre egy topic nevű, string típusú publishert, és definiálj egy 1 másodperces periódusidejű timert, amely a publikálásért felelős callback függvényt ütemezi.
 
@@ -113,9 +114,7 @@ A beolvasott paramétereket egy üzenet formájában írja ki a node a korábban
 
 ### Subscriber node létrehozása
 
-Most, hogy létrehoztál egy publishert, készíts egy olyan node-ot is, ami feliratkozik a kipublikált üzenetekre a `subscriber.cpp` fájlban.
-
-Készíts egy olyan osztályt, ami feliratkozik a korábban létrehozott topic-ra és kiírja a konzolra a kapott üzenetet. 
+Most, hogy létrehoztál egy publishert, a `subscriber.cpp` fájlban készíts egy olyan node-ot is, ami feliratkozik a kipublikált üzenetekre és kiírja azokat a konzolra .
 
 ??? example "Megoldás"
     ```cpp
@@ -152,7 +151,7 @@ Definiálj egy olyan interfészt, amely egy születési dátumot (`string`) foga
     int64 age
     ```
 !!! note "Megjegyzés"
-  Üzenet típusokat (`.msg`, `.srv`, `.action`) csak CPP package-ben lehet létrehozni. Egy nagy projektben érdemes a saját tpusokat külön package-be szervezni.
+    Üzenet típusokat (`.msg`, `.srv`, `.action`) csak CPP package-ben lehet létrehozni. Egy nagy projektben érdemes a saját tipusokat külön package-be szervezni.
 
 ### Service szerver létrehozása
 

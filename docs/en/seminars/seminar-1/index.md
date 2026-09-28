@@ -87,7 +87,7 @@ Create a node that has two parameters, `greeting` and `to_greet`. The node write
     this->greeting = this->get_parameter("greeting").as_string();
     ```
 !!! note "Note"
-The type used when reading a parameter must be specified.
+    The type used when reading a parameter must be specified.
 
 Create a publisher named `topic` with message type `string`, and define a timer with a 1-second period that schedules the callback function responsible for publishing.
 
