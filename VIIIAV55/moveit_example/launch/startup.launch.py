@@ -33,7 +33,7 @@ def generate_launch_description():
             ),
             {"mode": "mock"},
         )
-        .robot_description_semantic(os.path.join("urdf", "kr10_r1100_2_arm.srdf"))
+        .robot_description_semantic(os.path.join("urdf", "kr10_r1100_2.srdf"))
         .robot_description_kinematics(os.path.join("config", "kinematics.yaml"))
         .trajectory_execution(os.path.join("config", "moveit_controllers.yaml"))
         .planning_scene_monitor(
