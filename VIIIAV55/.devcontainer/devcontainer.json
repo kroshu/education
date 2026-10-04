@@ -32,11 +32,15 @@
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
         // "type=bind,source=${localWorkspaceFolder}/.devcontainer/certs,target=/tmp/certs,readonly"
     ],
+    // Only constants here: containerEnv is baked into the image at build time.
     "containerEnv": {
-        "DISPLAY": "${localEnv:DISPLAY}",
-        "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
         "QT_X11_NO_MITSHM": "1",
         "LIBGL_ALWAYS_SOFTWARE": "0"
+    },
+    // Host-dependent values go here. DISPLAY is unset on a Windows host,
+    // in which case .bashrc falls back to :0 (WSLg).
+    "remoteEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}"
     },
     "runArgs": [
         "--net=host"

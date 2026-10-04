@@ -19,12 +19,17 @@ RUN groupadd -g $GID $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER $USERNAME
 
+# Private runtime dir for Qt/GUI apps (the host's XDG_RUNTIME_DIR is not mounted)
+ENV XDG_RUNTIME_DIR=/tmp/runtime-$USERNAME
+RUN mkdir -p -m 0700 $XDG_RUNTIME_DIR
+
 # Create workspace so that user own this directory
 RUN mkdir -p /home/$USERNAME/ros2_ws/src/VIIIAV55
 WORKDIR /home/$USERNAME/ros2_ws
 
 # Copy configuration files
-RUN echo 'source /opt/ros/'$ROS_DISTRO'/setup.bash' >> /home/$USERNAME/.bashrc \
+RUN echo 'export DISPLAY="${DISPLAY:-:0}"' >> /home/$USERNAME/.bashrc \
+    && echo 'source /opt/ros/'$ROS_DISTRO'/setup.bash' >> /home/$USERNAME/.bashrc \
     && echo 'source /home/'$USERNAME'/ros2_ws/install/setup.bash' >> /home/$USERNAME/.bashrc
 
 # Clone repositories

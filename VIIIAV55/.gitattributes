@@ -1,0 +1,4 @@
+# Always check out text files with LF, also on Windows (core.autocrlf would
+# otherwise convert them to CRLF, which breaks the shell scripts and the
+# Dockerfile inside the Linux devcontainer).
+* text=auto eol=lf
