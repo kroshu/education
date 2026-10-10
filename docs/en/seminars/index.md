@@ -1,26 +1,41 @@
 # Development Environment Setup
 
-## Dev Container
+The development environment is provided as a **Dev Container**. You can read more about this technology in the [Visual Studio Code documentation](https://code.visualstudio.com/docs/devcontainers/containers).
 
-The required environment is provided as a **Dev Container**.
-You can read more about this technology on the [Visual Studio Code website](https://code.visualstudio.com/docs/devcontainers/containers).
+## 1. Install prerequisites
 
-Required software to run the container:
+Before starting the container, install the following software:
 
 - [Visual Studio Code](https://code.visualstudio.com/) + [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) &ndash; technically [Docker Engine](https://docs.docker.com/engine/install/) would also be enough, but Dev Container documentation also recommends Desktop
+- [Git](https://git-scm.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+    - **On Windows:**
+        1. Install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about) from an administrator PowerShell window with the `wsl --install` command, then restart your computer.
+        2. During the Docker Desktop installation, choose the **WSL2 backend** option.
+        3. After installation, open Docker **Settings**, then under **Resources > WSL integration** enable the **Enable integration with my default WSL distro** and **Ubuntu** options.
 
-If these are installed, clone the education repository to your machine. For example:
+## 2. Preparing and starting the project
+
+**1. Clone the repository**
+
+Open a terminal (e.g. PowerShell) and run the following command:
 
 ```shell
 git clone https://github.com/kroshu/education.git
 ```
 
-After that, start the [Docker daemon](https://docs.docker.com/engine/daemon/start/), which can be done easily from the Docker Desktop UI. Open the `VIIIAV55` folder in the education repository in VS Code. Press `F1` to open the Command Palette, then select `Dev Containers: Rebuild and Reopen in Container`. Then wait for the environment to build.
+**2. Start the Docker daemon**
 
-### Differences on corporate network
+Open the **Docker Desktop** application (this automatically starts the [Docker service](https://docs.docker.com/engine/daemon/start/) in the background).
 
-If you want to set up the environment from the **KUKA network**, first obtain the KUKA root certificate and place it in `.devcontainer/certs`. In addition, uncomment the section after the `mounts` key in `.devcontainer/devcontainer.json`. After that, everything is the same as above.
+**3. Open the folder in VS Code**
 
-!!! note "Note"
-    The above flow was tested with [Podman Desktop](https://podman-desktop.io/), which is an open-source alternative to Docker Desktop. Podman-specific settings are documented in the [VS Code docs](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman).
+Open the `VIIIAV55` folder inside the `education` repository in VS Code.
+
+**4. Environment-specific modification (Windows only):**
+
+Open the `.devcontainer/devcontainer.json` file and comment out **lines 31–44** (the `mounts`, `containerEnv` and `remoteEnv` keys).
+
+**5. Build the Dev Container**
+
+Press `F1` to open the `Command Palette`, then select `Dev Containers: Rebuild and Reopen in Container` and wait for the environment to build.

@@ -10,7 +10,7 @@ Mielőtt elindítanád a konténert, telepítsd az alábbi szoftvereket:
 - [Git](https://git-scm.com/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
     - **Windows esetén:**
-        1. Telepítsd a [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about) segédprogramot egy adminisztrátori PowerShell ablakból a `wsl --install paranccsal`, majd indítsd újra a számítógépet.
+        1. Telepítsd a [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about) segédprogramot egy adminisztrátori PowerShell ablakból a `wsl --install` paranccsal, majd indítsd újra a számítógépet.
         2. A Docker Desktop telepítése során válaszd a **WSL2 backend** opciót.
         3. A telepítés után nyisd meg a Docker **Settings**-et, majd a **Resources > WSL integration** menüpontban engedélyezd az **Enable integration with my default WSL distro** és az **Ubuntu** opciókat.
 
