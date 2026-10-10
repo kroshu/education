@@ -18,7 +18,7 @@ Mielőtt elindítanád a konténert, telepítsd az alábbi szoftvereket:
 
 **1. Repository klónozása**
 
-Nyiss meg egy terminált (pl. PowerShell) és futtast a következő parancsot:
+Nyiss meg egy terminált (pl. PowerShell) és futtasd a következő parancsot:
 
 ```shell
 git clone https://github.com/kroshu/education.git
