@@ -39,3 +39,7 @@ RUN git clone https://github.com/kroshu/kuka-external-control-sdk.git \
         /home/${USERNAME}/ros2_ws/src/kuka_drivers \
     && git clone -b humble https://github.com/kroshu/kuka_robot_descriptions.git \
         /home/${USERNAME}/ros2_ws/src/kuka_robot_descriptions
+
+RUN cd /home/${USERNAME}/ros2_ws/src/kuka-external-control-sdk && git checkout 6279e3e918e090507629cfb88a953e690d0ed3a4 \
+    && cd /home/${USERNAME}/ros2_ws/src/kuka_drivers && git checkout 20bfcfc777dd891039ebfaa1aad501dca4e3a3aa \
+    && cd /home/${USERNAME}/ros2_ws/src/kuka_robot_descriptions && git checkout f26cd854a42353ceb79f477d9d60680dbed51a69
