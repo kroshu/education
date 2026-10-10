@@ -1,26 +1,41 @@
 # Fejlesztői környezet előkészítése
 
-## Dev Container
+A fejlesztői környezetet egy **Dev Container** formájában biztosítjuk. Erről a technológiáról részletesebben a [Visual Studio Code dokumentációjában](https://code.visualstudio.com/docs/devcontainers/containers) olvashatsz.
 
-A szükséges környezetet egy **Dev Container** formájában biztosítottuk.
-Erről a technológiáról részletesebben a [Visual Studio Code weboldalán](https://code.visualstudio.com/docs/devcontainers/containers) olvashattok.
+## 1. Előkövetelmények telepítése
 
-A konténer indításához szükséges szoftverek:
+Mielőtt elindítanád a konténert, telepítsd az alábbi szoftvereket:
 
 - [Visual Studio Code](https://code.visualstudio.com/) + [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) kiegészítő
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) &ndash; valójában a [Docker Engine](https://docs.docker.com/engine/install/) is elegendő lenne, de a Dev Containerekről szóló dokumentáció is a Desktop verziót ajánlja
+- [Git](https://git-scm.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+    - **Windows esetén:**
+        1. Telepítsd a [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about) segédprogramot egy adminisztrátori PowerShell ablakból a `wsl --install paranccsal`, majd indítsd újra a számítógépet.
+        2. A Docker Desktop telepítése során válaszd a **WSL2 backend** opciót.
+        3. A telepítés után nyisd meg a Docker **Settings**-et, majd a **Resources > WSL integration** menüpontban engedélyezd az **Enable integration with my default WSL distro** és az **Ubuntu** opciókat.
 
-Ha ezek mind telepítve vannak, akkor leklónozhatjuk az `education` repository-t a saját gépünkre. Parancssorból például:
+## 2. A projekt előkészítése és indítása
+
+**1. Repository klónozása**
+
+Nyiss meg egy terminált (pl. PowerShell) és futtast a következő parancsot:
 
 ```shell
 git clone https://github.com/kroshu/education.git
 ```
 
-Ezután indítsuk el a [Docker daemont](https://docs.docker.com/engine/daemon/start/), ezt könnyen megtehetjük a Docker Desktop grafikus felületén keresztül is. Nyissuk meg az `education` repóban található `VIIIAV55` nevű mappát VS Code-ban. Nyomjuk meg az `F1` gombot a `Command Palette` megnyitásához, majd válasszuk ki a `Dev Containers: Rebuild and Reopen in Container` opciót. Most már csak várnunk kell, hogy felépüljön a rendszer.
+**2. Docker daemon indítása**
 
-### Eltérések céges hálózat esetén
+Nyisd meg a **Docker Desktop** alkalmazást (ez automatikusan elindítja a háttérben futó [Docker szolgáltatást](https://docs.docker.com/engine/daemon/start/)).
 
-Amennyiben a **KUKA hálózatáról** szeretnénk a környezetet összeállítani, akkor először meg kell szereznünk a KUKA gyökértanusítványát (*root certificate*), amit a `.devcontainer/certs` mappába kell elhelyeznünk. Ezen kívül ki kell kommentezni a `.devcontainer/devcontainer.json` fájlban a `mounts` kulcs utáni részt. Ezt követően minden ugyanúgy történik, mint a korábban leírt esetben.
+**3. Mappa megnyitása VS Code-ban**
 
-!!! note "Megjegyzés"
-    A fentebb leírt lépéseket [Podman Desktop](https://podman-desktop.io/) mellett próbáltuk ki, amely a Docker Desktop egy nyílt forráskódú alternatívája. Podman használatához szükséges beállításokról a [VS Code dokumentációjában](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman) olvashattok.
+Nyisd meg az `education` repón belül található `VIIIAV55` nevű mappát VS Code-ban.
+
+**4. Környezetfüggő módosítás (csak Windows esetén):**
+
+Nyisd meg a `.devcontainer/devcontainer.json` fájlt, és kommentezd ki a **31–44. sorokat** (a `mounts`, `containerEnv` és `remoteEnv` kulcsokat).
+
+**5. Dev Container felépítése**
+
+Nyomj `F1`-et a `Command Palette` megnyitásához, majd válaszd a `Dev Containers: Rebuild and Reopen in Container` lehetőséget, és várd meg, amíg a rendszer felépül.
