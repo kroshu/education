@@ -36,6 +36,14 @@ Open the `VIIIAV55` folder inside the `education` repository in VS Code.
 
 Open the `.devcontainer/devcontainer.json` file and comment out **lines 31–44** (the `mounts`, `containerEnv` and `remoteEnv` keys).
 
-**5. Build the Dev Container**
+**5. Enable X11 (Linux / Ubuntu only)**
+
+Since we also want to run graphical applications (e.g. RViz) from the container, you need to allow local X11 connections on your host machine. Run the following command in a terminal:
+
+```shell
+xhost +local:root
+```
+
+**6. Build the Dev Container**
 
 Press `F1` to open the `Command Palette`, then select `Dev Containers: Rebuild and Reopen in Container` and wait for the environment to build.

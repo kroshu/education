@@ -36,6 +36,14 @@ Nyisd meg az `education` repón belül található `VIIIAV55` nevű mappát VS C
 
 Nyisd meg a `.devcontainer/devcontainer.json` fájlt, és kommentezd ki a **31–44. sorokat** (a `mounts`, `containerEnv` és `remoteEnv` kulcsokat).
 
-**5. Dev Container felépítése**
+**5. X11 engedélyezés (Linux / Ubuntu esetén)**
+
+Mivel grafikus alkalmazásokat (pl. RViz) is szeretnénk futtatni a konténerből, engedélyezned kell a helyi X11 kapcsolatot a host gépeden. Futtasd az alábbi parancsot a terminálban:
+
+```shell
+xhost +local:root
+```
+
+**6. Dev Container felépítése**
 
 Nyomj `F1`-et a `Command Palette` megnyitásához, majd válaszd a `Dev Containers: Rebuild and Reopen in Container` lehetőséget, és várd meg, amíg a rendszer felépül.
